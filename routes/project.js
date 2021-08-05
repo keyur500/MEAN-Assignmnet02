@@ -3,11 +3,20 @@ const router = express.Router();
 const projectModel = require('../models/todoList_Model'); // adding model reference 
 const passport = require('passport');
 
+
+function isUserLoggedIn(req, res, next) {
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect('/login')
+}
+
+
 // router.get('/index', (req, res, next) => {
 //     res.render('Projects/index', {title: 'test app'});
 // })
 
-router.get('/add', (req, res, next) => {
+router.get('/add', isUserLoggedIn, (req, res, next) => {
     res.render('Projects/add', {title: 'Project add page'});
 })
 
