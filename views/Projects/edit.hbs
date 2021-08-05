@@ -1,0 +1,18 @@
+<h1>Edit the Task {{project.taskName}}</h1>
+
+<form method="post">
+    <div class="form-group">
+      <label for="taskName" class="form-label mt-4">Task </label>
+      <input name="taskName" type="text" class="form-control" id="taskName" value="{{project.taskName}}">
+      <small class="form-text text-muted">Name of task that you would like to accomplish !</small>
+    </div>
+    <div class="form-group">
+      <label for="dueDate" class="form-label mt-4">End Date </label>
+      <input name="dueDate" type="text" class="form-control control-label" id="dueDate" value="{{project.dueDate}}">
+    </div>
+    <div class="form-group">
+      <label for="description" class="form-label mt-4">Description </label>
+      <input name="description" type="text" class="form-control control-label" rows="3" id="description" value="{{project.description}}">
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-4">Add Task</button>
+</form>

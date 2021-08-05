@@ -56,4 +56,34 @@ router.get('/index', (req, res, next) => {
         }
     })
 })
+
+// -- Editing the Task and passing it to the edit page 
+router.get('/edit/:_id', (req, res, next) => {
+    projectModel.findById(req.params._id, (err, taskData) => {
+        if(err){
+            console.log(err);
+        }
+        else {
+            res.render('Projects/edit', { title: 'Project Details', project: taskData})
+        }
+    })
+})
+
+// -- Saving the edited data 
+router.post('/edit/:_id', (req, res, next) => {
+    projectModel.findOneAndUpdate({_id: req.params._id},{
+        taskName:req.body.taskName,
+        dueDate:req.body.dueDate,
+        description: req.body.description
+    }, (err, project) => {
+        if(err){
+            console.log(err);
+        }
+        else {
+            res.redirect('/Projects/index')
+        }
+    })
+})
+
+
 module.exports = router;

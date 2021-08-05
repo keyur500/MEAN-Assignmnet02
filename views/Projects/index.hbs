@@ -7,7 +7,7 @@
       <th scope="col">Task</th>
       <th scope="col">Due Date</th>
       <th scope="col">Description</th>
-      <th scope="col">Action</th>
+      <th scope="col" colspan="2">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +19,10 @@
       <td><a href="/Projects/delete/{{this._id}}" onclick="return taskDeleteConfirmation();"> 
             <button type="button" class="btn btn-outline-danger">
                 Delete</button>
+        </a></td>
+        <td><a href="/Projects/edit/{{this._id}}"> 
+            <button type="button" class="btn btn-outline-success">
+                Edit</button>
         </a></td>
     </tr>
     {{/each}}
