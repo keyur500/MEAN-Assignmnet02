@@ -11,6 +11,30 @@ var projectRouter = require('./routes/project')
 
 var app = express();
 
+// authentication 
+const passport = require('passport');
+const session = require('express-session');
+
+// configure passport bfore mapping
+app.use(session({
+  secret: 'keyur@213',
+  resave: false, 
+  saveUninitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+const User = require('./models/user');
+
+// use static auth
+passport.use(User.createStrategy());
+
+// serialize and deseralize model 
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -31,6 +55,7 @@ app.use('/Projects', projectRouter);
 const mongoose = require('mongoose');
 // connection string to connect to the Mongo db cluster
 const config = require('./config/global'); // specifing the relative path as it's the local module 
+const { initialize } = require('passport');
 mongoose.connect(config.db)
 
 .then( res => {

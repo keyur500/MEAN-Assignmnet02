@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const projectModel = require('../models/todoList_Model'); // adding model reference 
+const passport = require('passport');
 
 // router.get('/index', (req, res, next) => {
 //     res.render('Projects/index', {title: 'test app'});
@@ -36,7 +37,9 @@ router.post('/add', (req, res, next) => {
         }
         else {
             // if no error we are redirecting to the index page 
-            res.redirect('/Projects/index')
+            res.redirect('/Projects/index', {
+                user: req.user
+            })
         }
     })
 })
@@ -51,7 +54,8 @@ router.get('/index', (req, res, next) => {
             // loading the index view 
             res.render('Projects/index', {
                 title: 'Displaying Data',
-                project: Projects
+                project: Projects,
+                user: req.user
             })
         }
     })
@@ -64,7 +68,7 @@ router.get('/edit/:_id', (req, res, next) => {
             console.log(err);
         }
         else {
-            res.render('Projects/edit', { title: 'Project Details', project: taskData})
+            res.render('Projects/edit', { title: 'Project Details', project: taskData, user: req.user})
         }
     })
 })
