@@ -1,9 +1,8 @@
-/* Morph Bootswatch theme */
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-a {
-  color: #00B7FF;
+footer{
+  margin-top: auto;
 }

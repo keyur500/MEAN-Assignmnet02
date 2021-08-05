@@ -1,25 +1,19 @@
-<h1>Login</h1>
-
-{{#if messages}}
-    <div class="alert alert-danger">
-        Invalid Login
-    </div>
-{{else}}
-    <div class="alert alert-info">
-        Please enter your Credentials
-    </div>
-{{/if}}
-
-<form method="post">
+<form method="post" class="col-sm-6 mx-auto">
+    <h1 class="m-5 text-center">User Login</h1>
     <fieldset class="form-group">
         <label for="username" class="col-2 control-label">Username: *</label>
-        <input name="username" id="username" required />
+        <input class="form-control" name="username" id="username" required />
     </fieldset>
-    <fieldset class="form-group">
+    <fieldset class="form-group mt-3">
         <label for="password" class="col-2 control-label">Password: *</label>
-        <input name="password" id="password" type="password" required />
+        <input name="password" class="form-control" id="password" type="password" required />
     </fieldset>
+    {{#if messages}}
+    <div class="badge bg-danger mt-2">
+        Invalid Login Details !!
+    </div>
+    {{/if}}
     <fieldset class="form-group">
-        <button class="btn btn-info offset-2 mt-5">Login</button>
+        <button class="btn btn-info offset-5 mt-3">Login</button>
     </fieldset>
 </form>
