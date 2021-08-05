@@ -17,7 +17,7 @@ function isUserLoggedIn(req, res, next) {
 // })
 
 router.get('/add', isUserLoggedIn, (req, res, next) => {
-    res.render('Projects/add', {title: 'Project add page'});
+    res.render('Projects/add', {title: 'Project add page',user: req.user});
 })
 
 // -- Deleting the task 
@@ -46,9 +46,8 @@ router.post('/add', (req, res, next) => {
         }
         else {
             // if no error we are redirecting to the index page 
-            res.redirect('/Projects/index', {
-                user: req.user
-            })
+            //res.redirect('/Projects/index',{user: req.user})
+            res.redirect('/Projects/index')
         }
     })
 })
