@@ -1,0 +1,26 @@
+<h1>{{title}}</h1>
+<p>Welcome</p>
+
+<table class="table table-hover">
+  <thead class=" table table-dark">
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {{#each project}}
+      <td>{{this.taskName}}</td> 
+      <td>{{this.dueDate}}</td>
+      <td>{{this.description}}</td>
+      <td><a href="/Projects/delete/{{this._id}}" onclick="return taskDeleteConfirmation();"> 
+            <button type="button" class="btn btn-outline-danger">
+                Delete</button>
+        </a></td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
