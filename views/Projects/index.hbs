@@ -1,8 +1,7 @@
-<h1>{{title}}</h1>
-<p>Welcome</p>
+<h1 class="m-2 text-center">{{title}}</h1>
 {{#if user}}
 <a href="/projects/add">
-        <button type="button" class="btn btn-primary">Add Task</button>
+        <button type="button" class="btn btn-primary m-3">Add Task</button>
 </a>
 {{/if}}
 
@@ -26,7 +25,7 @@
       
       <td><a href="/Projects/delete/{{this._id}}" onclick="return taskDeleteConfirmation();"> 
             <button type="button" class="btn btn-outline-danger">
-                Delete</button>
+                Remove Task</button>
         </a></td>
         <td><a href="/Projects/edit/{{this._id}}"> 
             <button type="button" class="btn btn-outline-success">

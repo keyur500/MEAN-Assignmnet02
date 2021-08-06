@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var hbs = require('hbs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -10,6 +11,11 @@ var aboutRouter = require('./routes/about');
 var projectRouter = require('./routes/project')
 
 var app = express();
+
+// creating helper function 
+hbs.registerHelper('shortDate', (dateVal) => {
+  return new hbs.SafeString(dateVal.toLocalDateString('en-US'))
+})
 
 // authentication 
 const passport = require('passport');
@@ -56,6 +62,7 @@ const mongoose = require('mongoose');
 // connection string to connect to the Mongo db cluster
 const config = require('./config/global'); // specifing the relative path as it's the local module 
 const { initialize } = require('passport');
+const { DH_NOT_SUITABLE_GENERATOR } = require('constants');
 mongoose.connect(config.db)
 
 .then( res => {

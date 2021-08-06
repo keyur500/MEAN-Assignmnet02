@@ -6,3 +6,12 @@ body{
 footer{
   margin-top: auto;
 }
+
+.custom-bg {
+  background-color:#FFA0A0;
+  min-height: 75vh;
+  vertical-align: middle;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+}
+/* CSS for Landing Hero page */
